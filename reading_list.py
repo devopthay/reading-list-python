@@ -9,3 +9,8 @@ print("4 - Remover livro")
 print("5 - Sair")
 
 opcao = input("Escolha uma opção: ")
+
+if opcao == "1":
+    livro = input("Digite o nome do livro: ")
+    livros.append(livro)
+    print("Livro adicionado com sucesso!")
