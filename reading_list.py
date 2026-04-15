@@ -7,3 +7,5 @@ print("2 - Listar livros")
 print("3 - Marcar como lido")
 print("4 - Remover livro")
 print("5 - Sair")
+
+opcao = input("Escolha uma opção: ")
