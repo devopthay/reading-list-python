@@ -11,3 +11,5 @@ Projeto desenvolvido para a disciplina de DevOps.
 - Listar livros
 - Marcar como lido
 - Remover livros
+
+Atualização para teste de CD
