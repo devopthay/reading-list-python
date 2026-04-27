@@ -20,6 +20,14 @@ jobs:
       - name: Check Python syntax
         run: python -m py_compile reading_list.py
 
+      - name: Send Discord Notification (Build)
+        if: always()
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"🔧 Build finalizado! Status: ${{ job.status }}\"}" \
+          ${{ secrets.DISCORD_WEBHOOK }}
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -27,3 +35,11 @@ jobs:
     steps:
       - name: Simulate deployment
         run: echo "Deploy realizado com sucesso!"
+
+      - name: Send Discord Notification (Deploy)
+        if: always()
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"🚀 Deploy finalizado! Status: ${{ job.status }}\"}" \
+          ${{ secrets.DISCORD_WEBHOOK }}
