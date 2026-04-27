@@ -24,10 +24,12 @@ jobs:
 
       - name: Send Discord Notification (Build)
         if: always()
-        run: |
-          curl -X POST -H "Content-Type: application/json" \
-          -d '{"content":"Build finalizado com sucesso!"}' \
-          ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "Build finalizado!"
+
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -39,7 +41,9 @@ jobs:
 
       - name: Send Discord Notification (Deploy)
         if: always()
-        run: |
-          curl -X POST -H "Content-Type: application/json" \
-          -d '{"content":"Deploy finalizado com sucesso!"}' \
-          ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "Deploy finalizado!"
+
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
