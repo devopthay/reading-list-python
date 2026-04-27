@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,9 +25,8 @@ jobs:
       - name: Send Discord Notification (Build)
         if: always()
         run: |
-          curl -H "Content-Type: application/json" \
-          -X POST \
-          -d "{\"content\": \" Build finalizado! Status: ${{ job.status }}\"}" \
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content":"Build finalizado com sucesso!"}' \
           ${{ secrets.DISCORD_WEBHOOK }}
 
   deploy:
@@ -40,7 +40,6 @@ jobs:
       - name: Send Discord Notification (Deploy)
         if: always()
         run: |
-          curl -H "Content-Type: application/json" \
-          -X POST \
-          -d "{\"content\": \" Deploy finalizado! Status: ${{ job.status }}\"}" \
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content":"Deploy finalizado com sucesso!"}' \
           ${{ secrets.DISCORD_WEBHOOK }}
