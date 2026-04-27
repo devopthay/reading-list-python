@@ -10,5 +10,5 @@ Projeto desenvolvido para a disciplina de DevOps.
 - Adicionar livros
 - Listar livros
 - Marcar como lido
-- Remover livros
+- Remover livros 
  
